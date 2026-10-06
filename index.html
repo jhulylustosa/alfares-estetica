@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alfares Estética Avançada | Descubra o procedimento ideal para você</title>
+  <meta name="description" content="Responda um quiz rápido e descubra quais procedimentos estéticos combinam com o que você procura.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== TOPO / MENU ===== -->
+  <header class="topo">
+    <a href="#inicio" class="logo">Alfares <span>Estética Avançada
+    </span></a>
+    <nav class="menu">
+      <a href="#quiz">Descubra seu procedimento</a>
+      <a href="#procedimentos">Procedimentos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO (primeira dobra) ===== -->
+    <section id="inicio" class="hero">
+      <div class="container hero-conteudo">
+        <p class="sobretitulo">Clínica de estética Avançada</p>
+        <h1>Realce o que já existe de <em>melhor</em> em você</h1>
+        <p class="hero-texto">
+          Não sabe por onde começar? Responda algumas perguntas rápidas
+          e descubra quais procedimentos combinam com o que você procura.
+        </p>
+        <a href="#quiz" class="botao">Descobrir meu procedimento</a>
+      </div>
+    </section>
+
+    <!-- ===== QUIZ INTELIGENTE ===== -->
+    <section id="quiz" class="secao">
+      <div class="container">
+        <p class="sobretitulo">Avaliação guiada</p>
+        <h2>Descubra o procedimento ideal para você</h2>
+        <p class="intro">Leva menos de 1 minuto. Ao final, você recebe sugestões e pode agendar uma avaliação.</p>
+
+        <!-- O JavaScript desenha as perguntas dentro desta caixa -->
+        <div class="quiz-caixa" id="quiz-caixa" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ===== PROCEDIMENTOS ===== -->
+    <section id="procedimentos" class="secao secao-escura">
+      <div class="container">
+        <p class="sobretitulo">Nossos tratamentos</p>
+        <h2>Procedimentos</h2>
+        <!-- O JavaScript cria os cartões a partir da lista de procedimentos -->
+        <div class="grade" id="grade-procedimentos"></div>
+      </div>
+    </section>
+
+    <!-- ===== DIFERENCIAIS ===== -->
+    <section class="secao">
+      <div class="container">
+        <p class="sobretitulo">Por que escolher a Alfares </p>
+        <h2>Cuidado com segurança e naturalidade</h2>
+        <div class="grade tres">
+          <div class="cartao">
+            <h3>Avaliação individual</h3>
+            <p>Cada pessoa é única. A indicação final é sempre feita por um profissional, em consulta.</p>
+          </div>
+          <div class="cartao">
+            <h3>Resultados naturais</h3>
+            <p>Nosso foco é valorizar sua beleza, sem exageros e respeitando o seu estilo.</p>
+          </div>
+          <div class="cartao">
+            <h3>Ambiente acolhedor</h3>
+            <p>Um espaço pensado para você relaxar e se sentir bem desde a chegada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTATO ===== -->
+    <section id="contato" class="secao secao-escura">
+      <div class="container centro">
+        <p class="sobretitulo">Contato</p>
+        <h2>Vamos conversar?</h2>
+        <p class="intro">Agende sua avaliação e tire suas dúvidas diretamente com a nossa equipe.</p>
+        <a href="https://wa.me/5583991324120?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Alfares%20Est%C3%A9tica." class="botao" id="botao-whatsapp" target="_blank" rel="noopener">Chamar no WhatsApp</a>        
+        <p class="endereco">Avenida Eptacio Pessoa, 1251 — barrio dos estados · 10° andar sala 1007</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>&copy; <span id="ano">2026</span> Alfares Estética Avançada. Todos os direitos reservados.</p>
+    <p class="aviso-rodape">
+      As sugestões do quiz são apenas orientativas e não substituem a avaliação de um profissional de saúde.
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html> 
