@@ -1,0 +1,159 @@
+/* =========================================================
+   CARTÕES DE PROCEDIMENTO — cada um independente
+   (carregue este arquivo DEPOIS do style.css)
+   ========================================================= */
+#grade-procedimentos {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  align-items: start;               /* um cartão abrir não estica os vizinhos */
+}
+
+.cartao-procedimento {
+  background: linear-gradient(160deg, var(--azul-700), var(--azul-800));
+  border: 1px solid rgba(201, 162, 77, 0.22);
+  border-radius: var(--raio);
+  padding: 26px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.cartao-procedimento .etiqueta {
+  color: var(--ouro);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cartao-procedimento h3 {
+  font-size: 1.4rem;
+  color: var(--texto);
+  margin: 4px 0 8px;
+}
+
+.cartao-procedimento .resumo {
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+/* ----- Foto e explicação: escondidas até abrir ----- */
+.foto-resultado {
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  max-height: 0;
+  margin: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.4s ease, margin 0.4s ease;
+}
+
+.foto-resultado img {
+  display: block;
+  width: 85%;
+  height: 85%;
+  object-fit: cover;
+  object-position: center top;      /* mantém o rosto no enquadramento */
+}
+
+.foto-falta {                        /* quadro de exemplo, quando a foto não existe */
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+  border: 1px dashed rgba(201, 162, 77, 0.5);
+  border-radius: 12px;
+  background: linear-gradient(160deg, var(--azul-700), var(--azul-900));
+}
+
+.cartao-procedimento .explicacao {
+  color: var(--ouro-claro);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(15px);
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s, max-height 0.4s ease 0.1s;
+}
+
+/* ----- Aberto (clicado ou com Enter) ----- */
+.cartao-procedimento.ativo {
+  transform: translateY(-8px);
+  border-color: var(--ouro);
+  box-shadow: 0 18px 40px rgba(201, 162, 77, 0.2);
+}
+.cartao-procedimento.ativo .foto-resultado {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 520px;
+  margin: 12px 0;
+}
+.cartao-procedimento.ativo .explicacao {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 240px;
+}
+
+/* ----- Passar o mouse: só em aparelhos que têm mouse.
+   No celular o "hover" fica preso depois do toque e o cartão não fecharia. ----- */
+@media (hover: hover) {
+  .cartao-procedimento:hover {
+    transform: translateY(-8px);
+    border-color: var(--ouro);
+    box-shadow: 0 18px 40px rgba(201, 162, 77, 0.2);
+  }
+  .cartao-procedimento:hover .foto-resultado {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 520px;
+    margin: 12px 0;
+  }
+  .cartao-procedimento:hover .explicacao {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 240px;
+  }
+}
+
+.cartao-procedimento:focus-visible {
+  outline: 2px solid var(--ouro-claro);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cartao-procedimento,
+  .foto-resultado,
+  .cartao-procedimento .explicacao { transition: none; }
+}
+
+/* =========================================================
+   FOTO DO PROFISSIONAL (seção "Sobre")
+   Evita que uma foto grande apareça no tamanho original
+   e passe por cima do texto.
+   ========================================================= */
+img { max-width: 100%; }
+.sobre-foto img {
+  display: block;
+  object-position: center 20%;      /* prioriza o rosto no corte vertical */
+}
+
+/* ===== Carrossel de fotos dentro do cartão ===== */
+.foto-resultado { position: relative; }
+.foto-faixa { display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.foto-faixa::-webkit-scrollbar { display: none; }
+.foto-faixa > * { flex: 0 0 100%; scroll-snap-align: center; }
+.foto-seta {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 34px; height: 34px; border-radius: 50%; cursor: pointer;
+  background: rgba(7, 20, 43, 0.65); color: var(--ouro-claro);
+  border: 1px solid var(--ouro); font-size: 1.3rem; line-height: 1;
+}
+.foto-esq { left: 8px; }
+.foto-dir { right: 8px; }
+.foto-pontos { position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px; z-index: 2; }
+.foto-ponto { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.45); }
+.foto-ponto.ativo { background: var(--ouro); }
